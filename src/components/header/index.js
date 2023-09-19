@@ -9,7 +9,7 @@ export default function Header(){
             <TouchableOpacity>
                 {/* <Entypo name="menu" size={24} color="white" /> */}
             </TouchableOpacity>    
-                <IM style = {style.textHeader}>Filmaço.com</IM>
+                {/* <IM style = {style.textHeader}>Filmaço.com</IM> */}
 
         </View>
     )

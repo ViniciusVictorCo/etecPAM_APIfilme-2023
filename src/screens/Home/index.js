@@ -24,6 +24,7 @@ export default function App() {
       const response = await fetch("https://api.themoviedb.org/3/movie/popular?api_key=d28ce31deac192e22a99adf3d5b65a51&language=pt-BR");
       const data = await response.json();
       console.log(data.results);
+      setMovies(data.results);
 
       }
       
@@ -51,15 +52,15 @@ export default function App() {
         <FlatList
           horizontal = {true}
           showsHorizontalScrollIndicator = {false}
-          data = {filmes}
+          data = {movies}
           keyExtractor = {(item) => item.id}
           renderItem = { ({item}) => (
 
             <Card
             
-              nome = {item.nome}
-              nota = {item.nota}
-              imagem = {item.imagem}
+              nome = {item.title}
+              nota = {item.vote_average}
+              imagem = {item.poster_path}
             
             />
 
