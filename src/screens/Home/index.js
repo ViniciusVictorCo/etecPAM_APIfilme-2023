@@ -29,7 +29,7 @@ export default function App() {
       }
       
       catch(error){
-        console.error("REQUISIÇÃO FALHOR", error);
+        console.error("REQUISIÇÃO FALHOU", error);
       }
   }
 
@@ -37,6 +37,28 @@ export default function App() {
 
   },[] )
 
+  const [series, setSeries] = useState([]);
+  useEffect(() => {
+
+    async function getSeries() {
+      
+      try{
+
+      const response = await fetch("https://api.themoviedb.org/3/discover/tv?api_key=d28ce31deac192e22a99adf3d5b65a51&language=pt-BR");
+      const data = await response.json();
+      console.log(data.results);
+      setSeries(data.results);
+
+      }
+      
+      catch(error){
+        console.error("REQUISIÇÃO FALHOU", error);
+      }
+  }
+
+  getSeries();
+
+  },[] )
 
   document.title = 'topFilmes';
 
@@ -80,9 +102,9 @@ export default function App() {
 
             <Card
             
-              nome = {item.nome}
-              nota = {item.nota}
-              imagem = {item.imagem}
+              nome = {item.title}
+              nota = {item.vote_average}
+              imagem = {item.poster_path}
             
             />
 
